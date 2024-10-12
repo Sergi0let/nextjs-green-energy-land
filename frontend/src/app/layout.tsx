@@ -1,4 +1,4 @@
-import Header from "@/components/layout/header/Header";
+import { Header } from "@/components";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -42,7 +42,7 @@ const figtree = localFont({
     },
   ],
   variable: "--font-figtree",
-  display: "swap", // Рекомендовано використовувати display: swap для кращого UX
+  display: "swap",
 });
 
 export const metadata: Metadata = {

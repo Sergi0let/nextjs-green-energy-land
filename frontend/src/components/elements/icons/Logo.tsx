@@ -1,4 +1,4 @@
-export default function Logo() {
+const Logo = () => {
   return (
     <div>
       <svg
@@ -101,4 +101,6 @@ export default function Logo() {
       </svg>
     </div>
   );
-}
+};
+
+export { Logo };

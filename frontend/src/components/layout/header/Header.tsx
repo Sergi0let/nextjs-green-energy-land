@@ -1,14 +1,13 @@
 "use client";
 
-import Logo from "@/components/elements/icons/Logo";
-import Menu from "@/components/elements/icons/Menu";
+import { Logo, Menu } from "@/components";
 import headerData from "@/data/header.json";
 import useWindowScreenSize from "@/hooks/useWindowScreenSize";
 import cx from "classnames";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function Header() {
+const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const handleToggleMenu = () => setShowMenu((prev) => !prev);
 
@@ -21,7 +20,7 @@ export default function Header() {
   }, [size.width]);
 
   return (
-    <header className="border-b sm:border-none fixed bg-secondary-950 sm:bg-transparent w-full py-6">
+    <header className="border-b sm:border-none fixed z-50 bg-secondary-950 w-full py-6">
       <div className="container flex justify-between gap-1 items-center">
         <div className="flex items-center gap-10 ">
           <Link href="/" className="z-10">
@@ -57,4 +56,6 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+
+export { Header };

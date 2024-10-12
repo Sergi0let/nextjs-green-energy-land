@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 
-export default function Hero() {
+const Hero = () => {
   return (
     <section className="bg-secondary-950 h-fit py-48 flex flex-col gap-32">
       <div className="container">
@@ -19,7 +19,7 @@ export default function Hero() {
               clean, renewable energy sources transform the way we power our
               lives.
             </p>
-            <Link href={"/solutions"}>
+            <Link className="mt-4" href={"/solutions"}>
               <span className="py-4 px-5 bg-primary-300 rounded-full hover:bg-primary-400 duration-300 font-semibold">
                 See our solutions
               </span>
@@ -59,5 +59,6 @@ export default function Hero() {
       </div>
     </section>
   );
-}
-// D:\my-works\next-learn-start\nextjs-green-energy-lnd\frontend\public\hero\hero-1.webp
+};
+
+export { Hero };
