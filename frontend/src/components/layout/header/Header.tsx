@@ -29,7 +29,7 @@ export default function Header() {
           </Link>
           <ul
             className={cx(
-              "flex items-center sm:justify-start flex-wrap duration-300 sm:translate-y-0 ease-in-out transform absolute gap-x-8 gap-y-10 sm:gap-y-0 top-0 right-0 sm:relative sm:h-fit sm:w-fit h-screen w-screen text-white bg-secondary-950 flex-col justify-center sm:flex-row",
+              "flex items-center sm:justify-start flex-wrap duration-300 sm:translate-y-0 ease-in-out transform absolute gap-x-8 gap-y-10 sm:gap-y-0 top-0 right-0 sm:relative sm:h-fit sm:w-fit h-screen w-screen text-white bg-secondary-950 sm:bg-transparent flex-col justify-center sm:flex-row",
               showMenu === true ? "translate-y-0" : "-translate-y-full"
             )}
           >
