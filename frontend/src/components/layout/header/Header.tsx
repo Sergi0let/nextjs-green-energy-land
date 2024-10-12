@@ -23,7 +23,7 @@ const Header = () => {
     <header className="border-b sm:border-none fixed z-50 bg-secondary-950 w-full py-6">
       <div className="container flex justify-between gap-1 items-center">
         <div className="flex items-center gap-10 ">
-          <Link href="/" className="z-10">
+          <Link href="/" aria-label="Home" className="z-10">
             <Logo />
           </Link>
           <ul
@@ -46,6 +46,7 @@ const Header = () => {
           <button
             onClick={handleToggleMenu}
             className="p-3 flex items-center border rounded-full sm:hidden"
+            aria-label="Toggle menu"
           >
             <Menu />
           </button>

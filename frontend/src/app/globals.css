@@ -36,3 +36,8 @@ body {
     scrollbar-width: none; /* Firefox */
   }
 }
+.slider,
+.slider-wrapper,
+.carousel {
+  height: 100%;
+}
