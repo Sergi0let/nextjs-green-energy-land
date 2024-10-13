@@ -16,7 +16,7 @@ const AboutUsCarousel = () => {
       useKeyboardArrows
       showThumbs={false}
       interval={3000}
-      renderIndicator={(onClickHandler, isSelected, index, label) => {
+      renderIndicator={(onClickHandler, isSelected, index) => {
         const className = isSelected ? "dot selected" : "dot";
         return (
           <li
@@ -35,34 +35,34 @@ const AboutUsCarousel = () => {
           alt="About Us Carousel Image 1"
           width={420}
           height={530}
-          className="w-full object-cover h-full rounded-3xl"
+          className="h-full w-full rounded-3xl object-cover"
         />
       </div>
-      <div className="w-full h-full">
+      <div className="h-full w-full">
         <Image
           src="/hero/hero-2.webp"
           alt="About Us Carousel Image 1"
           width={420}
           height={530}
-          className="w-full object-cover h-full rounded-3xl"
+          className="h-full w-full rounded-3xl object-cover"
         />
       </div>
-      <div className="w-full h-full">
+      <div className="h-full w-full">
         <Image
           src="/hero/hero-3.webp"
           alt="About Us Carousel Image 3"
           width={420}
           height={530}
-          className="w-full object-cover h-full rounded-3xl"
+          className="h-full w-full rounded-3xl object-cover"
         />
       </div>
-      <div className="w-full h-full">
+      <div className="h-full w-full">
         <Image
           src="/hero/hero-4.webp"
           alt="About Us Carousel Image 1"
           width={420}
           height={530}
-          className="w-full object-cover h-full rounded-3xl"
+          className="h-full w-full rounded-3xl object-cover"
         />
       </div>
     </Carousel>

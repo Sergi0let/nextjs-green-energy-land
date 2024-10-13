@@ -3,19 +3,19 @@ import { AboutUsCarousel } from "./AboutUsCarousel";
 
 const AboutUs = () => {
   return (
-    <section className="py-48 bg-secondary-950">
+    <section className="bg-secondary-950 py-48">
       <div className="container">
-        <div className="flex text-white items-center border-b border-neutral-300 mb-12 sm:mb-14 pb-4">
-          <span className="size-2 bg-primary-300 block rounded-full mr-4" />
+        <div className="mb-12 flex items-center border-b border-neutral-300 pb-4 text-white sm:mb-14">
+          <span className="mr-4 block size-2 rounded-full bg-primary-300" />
           <span>About Us</span>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 md:gap-36">
-          <div className="flex justify-center flex-col gap-6">
-            <h2 className="text-features leading-none text-white">
+        <div className="grid gap-12 md:gap-36 lg:grid-cols-2">
+          <div className="flex flex-col justify-center gap-6">
+            <h2 className="text-section leading-none text-white">
               Committed to a sustainable future
             </h2>
-            <p className="text-white/80 text-base">
+            <p className="text-base text-white/80">
               As a pioneering force in the green energy sector, we&apos;ve been
               at the forefront of the transition to clean, renewable power
               sources. Our mission is simple yet profound: to create a world

@@ -4,32 +4,32 @@ import Marquee from "react-fast-marquee";
 
 const Hero = () => {
   return (
-    <section className="bg-secondary-950 h-fit py-48 flex flex-col gap-32">
+    <section className="flex h-fit flex-col gap-32 bg-secondary-950 py-48">
       <div className="container">
-        <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="">
-            <h1 className="text-white text-hero leading-none">
+            <h1 className="text-hero leading-none text-white">
               The Future of Green Energy
             </h1>
           </div>
-          <div className="flex mt-6 flex-col justify-between gap-6 sm:gap-0 sm:mt-0">
-            <p className="text-white text-base">
+          <div className="mt-6 flex flex-col justify-between gap-6 sm:mt-0 sm:gap-0">
+            <p className="text-base text-white">
               Our commitment to green energy is paving the way for a cleaner,
               healthier planet. Join us on a journey towards a future where
               clean, renewable energy sources transform the way we power our
               lives.
             </p>
             <Link className="mt-4" href={"/solutions"}>
-              <span className="py-4 px-5 bg-primary-300 rounded-full hover:bg-primary-400 duration-300 font-semibold">
+              <span className="rounded-full bg-primary-300 px-5 py-4 font-semibold duration-300 hover:bg-primary-400">
                 See our solutions
               </span>
             </Link>
           </div>
         </div>
       </div>
-      <div className="w-full col-span-2 h-1/2">
+      <div className="col-span-2 h-1/2 w-full">
         <Marquee autoFill speed={20}>
-          <div className="flex justify-center gap-8 items-start mx-4">
+          <div className="mx-4 flex items-start justify-center gap-8">
             <Image
               src="/hero/hero-1.webp"
               alt="Hero image 1"

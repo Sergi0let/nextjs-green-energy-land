@@ -57,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${figtree.variable}  antialiased`}>
+      <body className={`${figtree.variable} antialiased`}>
         <Header />
         {children}
       </body>

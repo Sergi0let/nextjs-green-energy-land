@@ -20,21 +20,21 @@ const Header = () => {
   }, [size.width]);
 
   return (
-    <header className="border-b sm:border-none fixed z-50 bg-secondary-950 w-full py-6">
-      <div className="container flex justify-between gap-1 items-center">
-        <div className="flex items-center gap-10 ">
+    <header className="fixed z-50 w-full border-b bg-secondary-950 py-6 sm:border-none">
+      <div className="container flex items-center justify-between gap-1">
+        <div className="flex items-center gap-10">
           <Link href="/" aria-label="Home" className="z-10">
             <Logo />
           </Link>
           <ul
             className={cx(
-              "flex items-center sm:justify-start flex-wrap duration-300 sm:translate-y-0 ease-in-out transform absolute gap-x-8 gap-y-10 sm:gap-y-0 top-0 right-0 sm:relative sm:h-fit sm:w-fit h-screen w-screen text-white bg-secondary-950 sm:bg-transparent flex-col justify-center sm:flex-row",
-              showMenu === true ? "translate-y-0" : "-translate-y-full"
+              "absolute right-0 top-0 flex h-screen w-screen transform flex-col flex-wrap items-center justify-center gap-x-8 gap-y-10 bg-secondary-950 text-white duration-300 ease-in-out sm:relative sm:h-fit sm:w-fit sm:translate-y-0 sm:flex-row sm:justify-start sm:gap-y-0 sm:bg-transparent",
+              showMenu === true ? "translate-y-0" : "-translate-y-full",
             )}
           >
             {headerData.header?.map((item, index) => (
               <li key={index}>
-                <Link className="capitalize whitespace-nowrap" href={item.href}>
+                <Link className="whitespace-nowrap capitalize" href={item.href}>
                   {item.label}
                 </Link>
               </li>
@@ -42,15 +42,15 @@ const Header = () => {
           </ul>
         </div>
 
-        <div className="flex gap-3 z-10">
+        <div className="z-10 flex gap-3">
           <button
             onClick={handleToggleMenu}
-            className="p-3 flex items-center border rounded-full sm:hidden"
+            className="flex items-center rounded-full border p-3 sm:hidden"
             aria-label="Toggle menu"
           >
             <Menu />
           </button>
-          <button className="hover:bg-primary-300 hover:text-black duration-300 border py-3 px-5 rounded-full text-white whitespace-nowrap">
+          <button className="whitespace-nowrap rounded-full border px-5 py-3 text-white duration-300 hover:bg-primary-300 hover:text-black">
             Get in touch
           </button>
         </div>
