@@ -1,4 +1,12 @@
-import { AboutUs, Features, Hero, Metrics, OurExperts } from "@/components";
+import {
+  AboutUs,
+  Blog,
+  Features,
+  Hero,
+  Metrics,
+  NewLetter,
+  OurExperts,
+} from "@/components";
 
 export default function Home() {
   return (
@@ -10,6 +18,10 @@ export default function Home() {
       <AboutUs />
       <Metrics />
       <OurExperts />
+      <div className="bg-secondary-950 p-4">
+        <NewLetter />
+      </div>
+      <Blog />
     </main>
   );
 }
