@@ -6,4 +6,6 @@ export * from "./LinkedIn";
 export * from "./LinkedIn2";
 export * from "./Logo";
 export * from "./Menu";
+export * from "./Organic";
+export * from "./SunLight";
 export * from "./WaveLines";

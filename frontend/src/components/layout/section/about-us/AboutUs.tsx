@@ -1,14 +1,12 @@
 import { Check } from "@/components/elements";
+import { SubTitle } from "@/components/elements/sub-title/SubTitle";
 import { AboutUsCarousel } from "./AboutUsCarousel";
 
 const AboutUs = () => {
   return (
     <section className="bg-secondary-950 py-48">
       <div className="container">
-        <div className="mb-12 flex items-center border-b border-neutral-300 pb-4 text-white sm:mb-14">
-          <span className="mr-4 block size-2 rounded-full bg-primary-300" />
-          <span>About Us</span>
-        </div>
+        <SubTitle subTitle="About Us" />
 
         <div className="grid gap-12 md:gap-36 lg:grid-cols-2">
           <div className="flex flex-col justify-center gap-6">

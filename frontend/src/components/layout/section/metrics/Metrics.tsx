@@ -1,20 +1,23 @@
-import { Organic } from "@/components/elements/icons/Organic";
-import { SunLight } from "@/components/elements/icons/SunLight";
+import {
+  Container,
+  Heading,
+  Organic,
+  SectionBlock,
+  SubTitle,
+  SunLight,
+} from "@/components";
 
 function Metrics() {
   return (
-    <section className="rounded-3xl bg-beigie-primary py-48">
-      <div className="container">
-        <div className="mb-12 flex items-center gap-2 border-b border-neutral-200 pb-4 sm:mb-14">
-          <span className="block h-2 w-2 rounded-full bg-primary-300" />
-          <span>Our results</span>
-        </div>
+    <SectionBlock className="rounded-3xl bg-beigie-primary">
+      <Container>
+        <SubTitle subTitle="Metrics" className="text-black" />
 
         <div>
           <div className="mb-12 sm:mb-24">
-            <h2 className="max-w-2xl text-section leading-[66px]">
+            <Heading as="h2" className="text-section leading-none">
               We are committed to a sustainable future
-            </h2>
+            </Heading>
           </div>
           <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <li className="flex flex-col items-start gap-6 rounded-3xl bg-primary-300 p-10">
@@ -54,8 +57,8 @@ function Metrics() {
             </li>
           </ul>
         </div>
-      </div>
-    </section>
+      </Container>
+    </SectionBlock>
   );
 }
 

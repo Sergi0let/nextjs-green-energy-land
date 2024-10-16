@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
+    "clsx": "^2.1.1",
     "next": "14.2.15",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "react": "^18.3.1",

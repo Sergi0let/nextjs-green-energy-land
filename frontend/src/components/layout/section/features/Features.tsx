@@ -1,17 +1,15 @@
-import { Ev } from "@/components/elements";
+import { Container, Ev, Heading, SectionBlock, SubTitle } from "@/components";
 
-const Features = () => {
+function Features() {
   return (
-    <section className="rounded-3xl bg-beigie-primary py-48">
-      <div className="container">
-        <div className="mb-12 flex items-center gap-2 border-b border-neutral-200 pb-4 sm:mb-14">
-          <span className="block h-2 w-2 rounded-full bg-primary-300" />
-          <span>Solutions</span>
-        </div>
-
+    <SectionBlock className="rounded-3xl bg-beigie-primary py-48">
+      <Container className="container">
+        <SubTitle subTitle="Solutions" className="text-black" />
         <div>
           <div className="mb-12 sm:mb-24">
-            <h2 className="text-section leading-none">Key to clean future</h2>
+            <Heading as="h2" className="text-section leading-none">
+              Key to clean future
+            </Heading>
           </div>
           <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
             <li className="flex flex-col items-start gap-6">
@@ -80,9 +78,9 @@ const Features = () => {
             </li>
           </ul>
         </div>
-      </div>
-    </section>
+      </Container>
+    </SectionBlock>
   );
-};
+}
 
 export { Features };

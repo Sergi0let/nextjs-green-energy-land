@@ -1,15 +1,12 @@
-import { LinkedIn } from "@/components/elements/icons/LinkedIn";
+import { Container, LinkedIn, SectionBlock, SubTitle } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 
 function OurExperts() {
   return (
-    <section className="bg-secondary-950 py-48">
-      <div className="container">
-        <div className="mb-12 flex items-center gap-2 border-b border-neutral-300 pb-4 text-white sm:mb-14">
-          <span className="h-3 w-3 rounded-full bg-primary-500" />
-          <span>Our experts</span>
-        </div>
+    <SectionBlock className="bg-secondary-950">
+      <Container>
+        <SubTitle subTitle="Our experts" />
 
         <div>
           <div className="flex flex-col gap-4">
@@ -156,8 +153,8 @@ function OurExperts() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </SectionBlock>
   );
 }
 export { OurExperts };
