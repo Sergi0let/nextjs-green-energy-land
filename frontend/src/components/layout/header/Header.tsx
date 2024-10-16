@@ -1,14 +1,16 @@
 "use client";
 
-import { Logo, Menu } from "@/components";
+import { Button, Logo, Menu } from "@/components";
 import headerData from "@/data/header.json";
 import useWindowScreenSize from "@/hooks/useWindowScreenSize";
+import useDetectScroll from "@smakss/react-scroll-direction";
 import cx from "classnames";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const { scrollDir } = useDetectScroll();
   const handleToggleMenu = () => setShowMenu((prev) => !prev);
 
   const size = useWindowScreenSize();
@@ -20,7 +22,12 @@ const Header = () => {
   }, [size.width]);
 
   return (
-    <header className="fixed z-50 w-full border-b bg-secondary-950 py-6 sm:border-none">
+    <header
+      className={cx(
+        "fixed z-50 w-full border-b border-primary-300 bg-secondary-950 py-6 duration-300",
+        scrollDir === "down" ? "-translate-y-full" : "translate-y-0",
+      )}
+    >
       <div className="container flex items-center justify-between gap-1">
         <div className="flex items-center gap-10">
           <Link href="/" aria-label="Home" className="z-10">
@@ -50,9 +57,8 @@ const Header = () => {
           >
             <Menu />
           </button>
-          <button className="whitespace-nowrap rounded-full border px-5 py-3 text-white duration-300 hover:bg-primary-300 hover:text-black">
-            Get in touch
-          </button>
+
+          <Button variant="tetriary-reversed">Get in touch</Button>
         </div>
       </div>
     </header>

@@ -1,11 +1,10 @@
+import { Button, Container, SectionBlock } from "@/components";
 import Image from "next/image";
-import Link from "next/link";
 import Marquee from "react-fast-marquee";
-
 const Hero = () => {
   return (
-    <section className="flex h-fit flex-col gap-32 bg-secondary-950 py-48">
-      <div className="container">
+    <SectionBlock className="flex h-fit flex-col gap-32 bg-secondary-950 py-48">
+      <Container className="flex h-1/2 items-center justify-center">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="">
             <h1 className="text-hero leading-none text-white">
@@ -19,14 +18,15 @@ const Hero = () => {
               clean, renewable energy sources transform the way we power our
               lives.
             </p>
-            <Link className="mt-4" href={"/solutions"}>
+            {/* <Link className="mt-4" href="/solutions">
               <span className="rounded-full bg-primary-300 px-5 py-4 font-semibold duration-300 hover:bg-primary-400">
                 See our solutions
               </span>
-            </Link>
+            </Link> */}
+            <Button variant="secondary">See our solutions</Button>
           </div>
         </div>
-      </div>
+      </Container>
       <div className="col-span-2 h-1/2 w-full">
         <Marquee autoFill speed={20}>
           <div className="mx-4 flex items-start justify-center gap-8">
@@ -57,7 +57,7 @@ const Hero = () => {
           </div>
         </Marquee>
       </div>
-    </section>
+    </SectionBlock>
   );
 };
 
