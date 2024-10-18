@@ -1,18 +1,22 @@
-import { Check } from "@/components/elements";
-import { SubTitle } from "@/components/elements/sub-title/SubTitle";
+import {
+  Check,
+  Container,
+  Heading,
+  SectionBlock,
+  SubTitle,
+} from "@/components";
 import { AboutUsCarousel } from "./AboutUsCarousel";
 
 const AboutUs = () => {
   return (
-    <section className="bg-secondary-950 py-48">
-      <div className="container">
+    <SectionBlock className="bg-secondary-950 py-48">
+      <Container className="container">
         <SubTitle subTitle="About Us" />
-
         <div className="grid gap-12 md:gap-36 lg:grid-cols-2">
           <div className="flex flex-col justify-center gap-6">
-            <h2 className="text-section leading-none text-white">
+            <Heading as="h2" className="text-section leading-none text-white">
               Committed to a sustainable future
-            </h2>
+            </Heading>
             <p className="text-base text-white/80">
               As a pioneering force in the green energy sector, we&apos;ve been
               at the forefront of the transition to clean, renewable power
@@ -44,8 +48,8 @@ const AboutUs = () => {
             <AboutUsCarousel />
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </SectionBlock>
   );
 };
 

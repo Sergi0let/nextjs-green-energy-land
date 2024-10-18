@@ -11,7 +11,7 @@ function Button(props: ButtonProps) {
   return (
     <button
       className={cx(buttonStyle({ variant, size }), className)}
-      {...props}
+      data-variant={variant}
     >
       {children}
     </button>
