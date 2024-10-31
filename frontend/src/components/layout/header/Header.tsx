@@ -6,11 +6,15 @@ import useWindowScreenSize from "@/hooks/useWindowScreenSize";
 import useDetectScroll from "@smakss/react-scroll-direction";
 import cx from "classnames";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Header = () => {
+  const pathname = usePathname();
+  const isSanityStudios = pathname.startsWith("/admin");
   const [showMenu, setShowMenu] = useState(false);
   const { scrollDir } = useDetectScroll();
+
   const handleToggleMenu = () => setShowMenu((prev) => !prev);
 
   const size = useWindowScreenSize();
@@ -26,6 +30,7 @@ const Header = () => {
       className={cx(
         "fixed z-50 w-full border-b border-primary-300 bg-secondary-950 py-6 duration-300",
         scrollDir === "down" ? "-translate-y-full" : "translate-y-0",
+        isSanityStudios === true ? "z-0" : "z-20",
       )}
     >
       <div className="container flex items-center justify-between gap-1">
