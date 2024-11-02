@@ -34,11 +34,35 @@ export async function getHomePageData() {
 					'url':url
 				},
 			},
+			'testimonials':pageBuilder[][_type == 'testimonials'][0]{
+				heading,
+				excerpt,
+				tagline,
+				cta,
+				solutions[]{
+					experts,
+					heading,
+					tagline,
+					'image':image.asset->url,
+				},
+			},
+			'ourExpert':pageBuilder[][_type == 'ourExpert'][0]{
+				heading,
+				excerpt,
+				tagline,
+				'ourExperts':ourExperts[]{
+					'link': cta.link,
+					'image': image.asset->url,
+					tagline,
+					heading,
+				},
+			},
 			'gallery':pageBuilder[][_type == 'imageGallary'][0] {
 				_type,
         'imageUrls': images[].asset->{
           'url': url
-        }
+        },
+			
 		}
 	}
 `;

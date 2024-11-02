@@ -6,7 +6,6 @@ import Marquee from "react-fast-marquee";
 
 const Hero = async () => {
   const data = await getHomePageData();
-
   const { hero, gallery, promotion } = data;
 
   return (
@@ -14,7 +13,7 @@ const Hero = async () => {
       <Container className="flex h-1/2 items-center justify-center">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="">
-            <h1 className="text-pretty text-hero leading-none text-white">
+            <h1 className="text-pretty break-words text-hero leading-none text-white">
               {hero?.heading}
             </h1>
           </div>

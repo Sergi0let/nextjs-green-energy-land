@@ -1,17 +1,20 @@
 "use client";
 
 import useWindowScreenSize from "@/hooks/useWindowScreenSize";
+import { SolutionType } from "@/types/types";
 import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
-export const TestimonialsCarousel = () => {
+
+export const TestimonialsCarousel = ({
+  items,
+}: {
+  items: ReadonlyArray<SolutionType>;
+}) => {
   const size = useWindowScreenSize();
 
   return (
     <Carousel
-      emulateTouch={true}
-      swipeScrollTolerance={1}
       stopOnHover={true}
-      swipeable={true}
       showThumbs={false}
       showStatus={false}
       interval={3500}
@@ -26,126 +29,31 @@ export const TestimonialsCarousel = () => {
       useKeyboardArrows
       className="cursor-disable w-screen max-w-7xl overflow-hidden duration-300"
     >
-      <div className="mx-2 shrink-0 rounded-3xl bg-primary-300 p-10 sm:col-span-1">
-        <p className="min-h-[180px] text-left">Some Name</p>
-        <div className="flex flex-col items-center gap-6 sm:flex-row">
-          <div className="relative h-[56px] w-[56px] shrink-0">
-            <Image
-              src="/avatar/avatar-1.webp"
-              alt="Expert Image"
-              width={90}
-              height={90}
-              className="h-full w-full rounded-full object-cover"
-            />
-          </div>
-          <div className="flex w-full flex-col justify-between gap-2 sm:flex-row">
-            <div className="flex flex-col text-black">
-              <h3 className="text-sub-title">Heading</h3>
-              <p className="text-sm text-black opacity-90">Expert Name</p>
+      {items.map(({ tagline, experts, image, heading }, index: number) => (
+        <div
+          key={index}
+          className="mx-2 shrink-0 rounded-3xl bg-primary-300 p-10 sm:col-span-1"
+        >
+          <p className="min-h-[180px] text-left">{experts}</p>
+          <div className="flex flex-col items-center gap-6 sm:flex-row">
+            <div className="relative h-[56px] w-[56px] shrink-0">
+              <Image
+                src={image ?? ""}
+                alt="Expert Image"
+                width={90}
+                height={90}
+                className="h-full w-full rounded-full object-cover"
+              />
+            </div>
+            <div className="flex w-full flex-col justify-between gap-2 sm:flex-row">
+              <div className="flex flex-col text-black">
+                <h3 className="text-sub-title">{heading}</h3>
+                <p className="text-sm text-black opacity-90">{tagline}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="mx-2 shrink-0 rounded-3xl bg-primary-300 p-10 sm:col-span-1">
-        <p className="min-h-[180px] text-left">Some Name</p>
-        <div className="flex flex-col items-center gap-6 sm:flex-row">
-          <div className="relative h-[56px] w-[56px] shrink-0">
-            <Image
-              src="/avatar/avatar-1.webp"
-              alt="Expert Image"
-              width={90}
-              height={90}
-              className="h-full w-full rounded-full object-cover"
-            />
-          </div>
-          <div className="flex w-full flex-col justify-between gap-2 sm:flex-row">
-            <div className="flex flex-col text-black">
-              <h3 className="text-sub-title">Heading</h3>
-              <p className="text-sm text-black opacity-90">Expert Name</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mx-2 shrink-0 rounded-3xl bg-primary-300 p-10 sm:col-span-1">
-        <p className="min-h-[180px] text-left">Some Name</p>
-        <div className="flex flex-col items-center gap-6 sm:flex-row">
-          <div className="relative h-[56px] w-[56px] shrink-0">
-            <Image
-              src="/avatar/avatar-1.webp"
-              alt="Expert Image"
-              width={90}
-              height={90}
-              className="h-full w-full rounded-full object-cover"
-            />
-          </div>
-          <div className="flex w-full flex-col justify-between gap-2 sm:flex-row">
-            <div className="flex flex-col text-black">
-              <h3 className="text-sub-title">Heading</h3>
-              <p className="text-sm text-black opacity-90">Expert Name</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mx-2 shrink-0 rounded-3xl bg-primary-300 p-10 sm:col-span-1">
-        <p className="min-h-[180px] text-left">Some Name</p>
-        <div className="flex flex-col items-center gap-6 sm:flex-row">
-          <div className="relative h-[56px] w-[56px] shrink-0">
-            <Image
-              src="/avatar/avatar-1.webp"
-              alt="Expert Image"
-              width={90}
-              height={90}
-              className="h-full w-full rounded-full object-cover"
-            />
-          </div>
-          <div className="flex w-full flex-col justify-between gap-2 sm:flex-row">
-            <div className="flex flex-col text-black">
-              <h3 className="text-sub-title">Heading</h3>
-              <p className="text-sm text-black opacity-90">Expert Name</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mx-2 shrink-0 rounded-3xl bg-primary-300 p-10 sm:col-span-1">
-        <p className="min-h-[180px] text-left">Some Name</p>
-        <div className="flex flex-col items-center gap-6 sm:flex-row">
-          <div className="relative h-[56px] w-[56px] shrink-0">
-            <Image
-              src="/avatar/avatar-1.webp"
-              alt="Expert Image"
-              width={90}
-              height={90}
-              className="h-full w-full rounded-full object-cover"
-            />
-          </div>
-          <div className="flex w-full flex-col justify-between gap-2 sm:flex-row">
-            <div className="flex flex-col text-black">
-              <h3 className="text-sub-title">Heading</h3>
-              <p className="text-sm text-black opacity-90">Expert Name</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mx-2 shrink-0 rounded-3xl bg-primary-300 p-10 sm:col-span-1">
-        <p className="min-h-[180px] text-left">Some Name</p>
-        <div className="flex flex-col items-center gap-6 sm:flex-row">
-          <div className="relative h-[56px] w-[56px] shrink-0">
-            <Image
-              src="/avatar/avatar-1.webp"
-              alt="Expert Image"
-              width={90}
-              height={90}
-              className="h-full w-full rounded-full object-cover"
-            />
-          </div>
-          <div className="flex w-full flex-col justify-between gap-2 sm:flex-row">
-            <div className="flex flex-col text-black">
-              <h3 className="text-sub-title">Heading</h3>
-              <p className="text-sm text-black opacity-90">Expert Name</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      ))}
     </Carousel>
   );
 };

@@ -5,7 +5,6 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const AboutUsCarousel = ({ images }: { images: { url: string }[] }) => {
-  console.log(images);
   return (
     <Carousel
       autoPlay

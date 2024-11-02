@@ -26,11 +26,11 @@ export const testimonialsType = defineType({
       type: "promotion",
     }),
     defineField({
-      name: "Testimonials",
+      name: "solutions",
       type: "array",
       of: [
         defineField({
-          name: "testimonial",
+          name: "solution",
           type: "textWithIllustration",
         }),
       ],
