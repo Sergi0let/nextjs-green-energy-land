@@ -1,4 +1,4 @@
-function SunLight() {
+function Sunlight() {
   return (
     <svg
       width="48"
@@ -71,4 +71,4 @@ function SunLight() {
   );
 }
 
-export { SunLight };
+export { Sunlight };

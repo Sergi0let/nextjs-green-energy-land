@@ -6,6 +6,7 @@ import Marquee from "react-fast-marquee";
 
 const Hero = async () => {
   const data = await getHomePageData();
+
   const { hero, gallery, promotion } = data;
 
   return (
@@ -17,7 +18,7 @@ const Hero = async () => {
               {hero?.heading}
             </h1>
           </div>
-          <div className="mt-6 flex flex-col justify-between gap-6 sm:mt-0 sm:gap-0 md:justify-around">
+          <div className="mt-6 flex grid-cols-2 flex-col justify-between gap-6 sm:mt-0 sm:gap-0 md:justify-around">
             <p className="text-base text-white">{hero?.tagline}</p>
             <Link className="mt-4" href={promotion?.link}>
               <span className="rounded-full bg-primary-300 px-5 py-4 font-semibold duration-300 hover:bg-primary-400">

@@ -28,9 +28,9 @@ const Header = () => {
   return (
     <header
       className={cx(
-        "fixed z-50 w-full border-b border-primary-300 bg-secondary-950 py-6 duration-300",
+        "fixed z-0 w-full border-b border-primary-300 bg-secondary-950 py-6 duration-300",
         scrollDir === "down" ? "-translate-y-full" : "translate-y-0",
-        isSanityStudios === true ? "z-0" : "z-20",
+        isSanityStudios ? "z-0" : "z-20",
       )}
     >
       <div className="container flex items-center justify-between gap-1">

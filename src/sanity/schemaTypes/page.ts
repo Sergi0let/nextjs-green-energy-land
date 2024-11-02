@@ -32,6 +32,26 @@ const pageType = defineType({
           name: "imageGallary",
           type: "imageGallary",
         }),
+        defineArrayMember({
+          name: "solutions",
+          type: "solutions",
+        }),
+        defineArrayMember({
+          name: "aboutUs",
+          type: "aboutUs",
+        }),
+        defineArrayMember({
+          name: "metrics",
+          type: "metrics",
+        }),
+        defineArrayMember({
+          name: "testimonials",
+          type: "testimonials",
+        }),
+        defineArrayMember({
+          name: "ourExpert",
+          type: "ourExpert",
+        }),
       ],
     }),
   ],
