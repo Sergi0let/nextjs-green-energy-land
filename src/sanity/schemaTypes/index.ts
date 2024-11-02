@@ -12,6 +12,8 @@ import { ourExpertType } from "./ourExpert";
 import { ourPhilosophyType } from "./ourPhilosophy";
 import pageType from "./page";
 import { postType } from "./postType";
+import priceType from "./price";
+import priceInfoType from "./priceInfo";
 import { promotion } from "./promotion";
 import { solutionsType } from "./solutions";
 import { testimonialsType } from "./testimonials";
@@ -36,5 +38,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     ourPhilosophyType,
     jobType,
     jobInfoType,
+    priceInfoType,
+    priceType,
   ],
 };

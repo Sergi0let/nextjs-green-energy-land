@@ -60,6 +60,10 @@ const pageType = defineType({
           name: "job",
           type: "job",
         }),
+        defineArrayMember({
+          name: "price",
+          type: "price",
+        }),
       ],
     }),
   ],

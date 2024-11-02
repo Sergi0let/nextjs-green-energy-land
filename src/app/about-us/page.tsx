@@ -14,7 +14,6 @@ import Link from "next/link";
 export default async function AboutUsPage() {
   const data = await getAboutPage();
   const { hero, promotion, ourPhilosophy, ourExpert } = data;
-  console.log("🚀 ~ AboutUsPage ~ ourPhilosophy:", ourExpert);
 
   return (
     <>
