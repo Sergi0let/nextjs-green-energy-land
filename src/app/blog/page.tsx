@@ -1,5 +1,6 @@
 import { Container, Heading, SectionBlock, SubTitle } from "@/components";
 import { getBlogPage } from "@/sanity/queries/page";
+import { BlogPostType } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,7 +23,8 @@ export default async function BlogPage() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-8 space-y-4 md:mt-12 md:grid-cols-2">
-          {data.map((post: any, index: number) => {
+          {data.map((post: BlogPostType, index: number) => {
+            console.log(post);
             return (
               <div
                 key={index}
@@ -33,7 +35,7 @@ export default async function BlogPage() {
                   className="aspect-video h-[360px] overflow-hidden rounded-3xl"
                 >
                   <Image
-                    src={post.mainImage}
+                    src={post.mainImage ?? ""}
                     height={360}
                     width={360}
                     alt="Blog 1"
@@ -56,7 +58,7 @@ export default async function BlogPage() {
                 <div className="mt-6 flex items-center gap-6">
                   <div className="flex items-center gap-3">
                     <Image
-                      src={post.authorImage}
+                      src={post.authorImage ?? ""}
                       height={40}
                       width={40}
                       alt="Avatar Author"

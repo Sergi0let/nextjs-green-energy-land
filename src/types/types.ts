@@ -55,3 +55,13 @@ export type PricingPlan = {
   recommended: boolean | null;
   time: string;
 };
+
+export type BlogPostType = {
+  slug?: string | null;
+  mainImage?: string | null;
+  title?: string | null;
+  desc?: string | null;
+  authorImage?: string | null;
+  name?: string | null;
+  timeRead?: string | null;
+};

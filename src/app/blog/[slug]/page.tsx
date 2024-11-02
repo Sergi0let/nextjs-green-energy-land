@@ -2,6 +2,7 @@ import { Container, Heading, SectionBlock, SubTitle } from "@/components";
 import ShareSocialList from "@/components/elements/share/ShareSocial";
 import { client } from "@/sanity/lib/client";
 import { getBlogPage, getBlogPost } from "@/sanity/queries/page";
+import { BlogPostType } from "@/types/types";
 import { default as ImageUrlBuilder } from "@sanity/image-url";
 import { PortableText, PortableTextComponents } from "next-sanity";
 import Image from "next/image";
@@ -148,8 +149,8 @@ export default async function SingleBlogPage({
           <SubTitle className="" subTitle="More like this" />
           <div className="mt-12 grid grid-cols-1 gap-8 md:mt-24 md:grid-cols-3">
             {relatedPosts
-              ?.filter((elem: any) => elem.slug !== slug)
-              ?.map((post: any, index: number) => (
+              ?.filter((elem: { slug: string }) => elem.slug !== slug)
+              ?.map((post: BlogPostType, index: number) => (
                 <Link
                   href={`/blog/${post?.slug}`}
                   key={index}
@@ -157,7 +158,7 @@ export default async function SingleBlogPage({
                 >
                   <div className="aspect-video h-[360px] overflow-hidden rounded-3xl">
                     <Image
-                      src={post?.mainImage}
+                      src={post?.mainImage ?? ""}
                       height={360}
                       width={360}
                       alt="Blog 1"
