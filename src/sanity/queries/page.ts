@@ -55,6 +55,7 @@ export async function getHomePageData() {
 					'image': image.asset->url,
 					tagline,
 					heading,
+					experts,
 				},
 			},
 			'gallery':pageBuilder[][_type == 'imageGallary'][0] {
@@ -66,6 +67,71 @@ export async function getHomePageData() {
 		}
 	}
 `;
+  return await client.fetch(getPageQuery, {
+    revalidate: new Date().getSeconds(),
+  });
+}
+
+export async function getAboutPage() {
+  const getPageQuery = groq`
+    *[_type == 'page'][slug == 'about-us'][0]{
+      slug,
+      'hero': pageBuilder[][_type == 'hero'][0]{
+        heading,
+        tagline,
+        'heroImage': image.asset->url,
+      },
+      'promotion': pageBuilder[][_type == 'promotion'][0]{
+        link,
+        title,
+      },
+      'ourPhilosophy': pageBuilder[][_type == 'ourPhilosophy'][0]{
+        heading,
+        cta,
+        philosophys[] {
+          heading,
+          tagline,
+          experts,
+        },
+      },
+      'ourExpert': pageBuilder[][_type == 'ourExpert'][0]{
+        heading,
+        tagline,
+        excerpt,
+        'ourExperts': ourExperts[] {
+          'link': cta.link,
+          'image': image.asset->url,
+          tagline,
+          heading,
+					experts,
+        },
+      },
+    }
+  `;
+  return await client.fetch(getPageQuery, {
+    revalidate: new Date().getSeconds(),
+  });
+}
+
+export async function getCareersPage() {
+  const getPageQuery = groq`
+    *[_type == 'page'][slug == 'careers'][0]{
+      slug,
+      'hero': pageBuilder[][_type == 'hero'][0]{
+        heading,
+        tagline,
+      },
+      'jobBoard': pageBuilder[][_type == 'job'][]{
+        department,
+        available[] {
+          location,
+          title,
+          type,
+          link,
+        },
+      },
+    }
+  `;
   return await client.fetch(getPageQuery, {
     revalidate: new Date().getSeconds(),
   });

@@ -21,8 +21,27 @@ export type SolutionType = {
 };
 
 export type ItemType = {
-  link: string;
-  image: string;
-  tagline: string;
   heading: string;
+  link?: string;
+  image?: string;
+  tagline?: string;
+  experts?: string;
+  exports?: string;
 };
+
+// Тип для окремої вакансії
+export type JobPosition = {
+  location: string;
+  title: string;
+  type: "Full-Time" | "Part-Time" | "Remote" | "On-site"; // Вказані приклади типів зайнятості
+  link?: string;
+};
+
+// Тип для відділу з вакансіями
+export type DepartmentType = {
+  department: string;
+  available: JobPosition[];
+};
+
+// Тип для масиву відділів на сторінці кар'єри
+export type JobBoard = DepartmentType[];

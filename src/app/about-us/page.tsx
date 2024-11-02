@@ -1,38 +1,40 @@
 import {
-  Button,
   Container,
   Heading,
+  ImageFull,
   LinkedIn2,
   NewLetter,
   SectionBlock,
 } from "@/components";
+import { getAboutPage } from "@/sanity/queries/page";
+import { ItemType } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function AboutUsPage() {
+export default async function AboutUsPage() {
+  const data = await getAboutPage();
+  const { hero, promotion, ourPhilosophy, ourExpert } = data;
+  console.log("🚀 ~ AboutUsPage ~ ourPhilosophy:", ourExpert);
+
   return (
     <>
       <SectionBlock className="bg-white">
-        <Container>
+        <Container className="py-0">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <Heading className="text-hero" as="h1">
-              About us
+              {hero?.heading}
             </Heading>
             <div>
-              <p className="mb-4">
-                At Flow, we&apos;re committed to a sustainable future. As a
-                pioneering force in the green energy sector, we&apos;ve been at
-                the forefront of the transition to clean, renewable power
-                sources. Our mission is simple yet profound: to create a world
-                where energy is not only abundant but also environmentally
-                responsible. We believe that by harnessing the power of nature,
-                we can power the world and protect it simultaneously.
-              </p>
-              <Button variant="secondary">Read more</Button>
+              <p className="mb-4">{hero?.tagline}</p>
+              <Link href={promotion?.link} className="mt-4 inline-block">
+                <span className="rounded-full bg-primary-300 px-5 py-4 font-semibold duration-300 hover:bg-primary-400">
+                  {promotion?.title}
+                </span>
+              </Link>
             </div>
           </div>
 
-          <div className="mt-4 grid gap-4 md:h-screen md:grid-cols-4 md:grid-rows-4">
+          {/* <div className="mt-4 grid gap-4 md:h-screen md:grid-cols-4 md:grid-rows-4">
             <div className="col-span-2 row-span-4 grid h-full grid-cols-2 grid-rows-4 gap-4">
               <div className="col-span-2 row-span-2 overflow-hidden rounded-3xl">
                 <Image
@@ -138,60 +140,37 @@ export default function AboutUsPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </Container>
-      </SectionBlock>
-      <SectionBlock className="bg-white">
+        <ImageFull
+          src={hero?.heroImage}
+          alt="About Us"
+          className="mb-24 mt-10 flex max-h-96 w-full items-center justify-center overflow-hidden object-top"
+        />
         <Container>
           <Heading
             as="h2"
             className="mb-24 text-section capitalize leading-none"
           >
-            our work philosopy
+            {ourPhilosophy?.heading}
           </Heading>
           <div className="grid grid-cols-1 gap-4">
-            <div className="grid rounded-3xl bg-primary-300 p-4 py-12 md:grid-cols-2">
-              <div>
-                <span>Culture</span>
-                <Heading as="h3" className="text-features leading-none">
-                  Curiosity & Creativity
-                </Heading>
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-                officia fugiat nam, magni impedit illum quasi accusamus amet
-                natus consectetur repellendus explicabo dignissimos eos dolorum
-                recusandae incidunt et modi. Ratione?
-              </p>
-            </div>
-            <div className="grid rounded-3xl bg-primary-300 p-4 py-12 md:grid-cols-2">
-              <div>
-                <span>Culture</span>
-                <Heading as="h3" className="text-features leading-none">
-                  Curiosity & Creativity
-                </Heading>
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-                officia fugiat nam, magni impedit illum quasi accusamus amet
-                natus consectetur repellendus explicabo dignissimos eos dolorum
-                recusandae incidunt et modi. Ratione?
-              </p>
-            </div>
-            <div className="grid rounded-3xl bg-primary-300 p-4 py-12 md:grid-cols-2">
-              <div>
-                <span>Culture</span>
-                <Heading as="h3" className="text-features leading-none">
-                  Curiosity & Creativity
-                </Heading>
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-                officia fugiat nam, magni impedit illum quasi accusamus amet
-                natus consectetur repellendus explicabo dignissimos eos dolorum
-                recusandae incidunt et modi. Ratione?
-              </p>
-            </div>
+            {ourPhilosophy?.philosophys?.map(
+              ({ heading, tagline, experts }: ItemType, index: number) => (
+                <div
+                  key={index}
+                  className="grid space-y-4 rounded-3xl bg-primary-300 p-4 py-12 md:grid-cols-2"
+                >
+                  <div>
+                    <span>{tagline}</span>
+                    <Heading as="h3" className="text-title leading-none">
+                      {heading}
+                    </Heading>
+                  </div>
+                  <p>{experts}</p>
+                </div>
+              ),
+            )}
           </div>
         </Container>
       </SectionBlock>
@@ -204,201 +183,47 @@ export default function AboutUsPage() {
             as="h2"
             className="mb-24 text-section capitalize leading-none"
           >
-            our team
+            {ourExpert?.heading}
           </Heading>
           <div className="grid gap-4 md:grid-cols-3">
-            <div className="relative col-span-1 h-[600px] overflow-hidden rounded-xl">
-              <Image
-                src="https://images.unsplash.com/photo-1729386910612-c58172d922c3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                width={320}
-                height={450}
-                className="h-full w-full object-cover"
-                alt="Aerial view of a lush green area"
-              />
-              <div className="group absolute bottom-2 w-full overflow-hidden px-2 backdrop-blur-2xl">
-                <div className="flex h-0 min-h-10 flex-col justify-between rounded-xl bg-primary-300 px-6 py-2 duration-300 group-hover:h-[240px]">
-                  <div className="flex items-center justify-between">
-                    <Heading
-                      as="h4"
-                      className="text-label font-semibold leading-none"
-                    >
-                      Tom Smith
-                    </Heading>
-                    <span className="">CTO</span>
-                    <Link href="#">
-                      <LinkedIn2 />
-                    </Link>
+            {ourExpert?.ourExperts.map(
+              (
+                { image, heading, tagline, experts, link }: ItemType,
+                index: number,
+              ) => (
+                <div
+                  key={index}
+                  className="relative col-span-1 h-[600px] overflow-hidden rounded-xl"
+                >
+                  <Image
+                    src={image ?? ""}
+                    width={320}
+                    height={450}
+                    className="h-full w-full object-cover"
+                    alt="Aerial view of a lush green area"
+                  />
+                  <div className="group absolute bottom-2 w-full overflow-hidden px-2 backdrop-blur-2xl">
+                    <div className="flex h-0 min-h-10 flex-col justify-between rounded-xl bg-primary-300 px-6 py-2 duration-300 group-hover:h-[240px]">
+                      <div className="flex items-center justify-between">
+                        <Heading
+                          as="h4"
+                          className="text-label font-semibold leading-none"
+                        >
+                          {heading}
+                        </Heading>
+                        <span className="">{tagline}</span>
+                        <Link href={link ?? ""} target="_blank">
+                          <LinkedIn2 />
+                        </Link>
+                      </div>
+                      <div className="duration300 my-4 h-0 translate-y-3 group-hover:h-full group-hover:translate-y-0">
+                        {experts}
+                      </div>
+                    </div>
                   </div>
-                  <ul className="duration300 my-4 h-0 translate-y-3 group-hover:h-full group-hover:translate-y-0">
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                  </ul>
                 </div>
-              </div>
-            </div>
-            <div className="relative col-span-1 h-[600px] overflow-hidden rounded-xl">
-              <Image
-                src="https://images.unsplash.com/photo-1729386910612-c58172d922c3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                width={320}
-                height={450}
-                className="h-full w-full object-cover"
-                alt="Aerial view of a lush green area"
-              />
-              <div className="group absolute bottom-2 w-full overflow-hidden px-2 backdrop-blur-2xl">
-                <div className="flex h-0 min-h-10 flex-col justify-between rounded-xl bg-primary-300 px-6 py-2 duration-300 group-hover:h-[240px]">
-                  <div className="flex items-center justify-between">
-                    <Heading
-                      as="h4"
-                      className="text-label font-semibold leading-none"
-                    >
-                      Tom Smith
-                    </Heading>
-                    <span className="">CTO</span>
-                    <Link href="#">
-                      <LinkedIn2 />
-                    </Link>
-                  </div>
-                  <ul className="duration300 my-4 h-0 translate-y-3 group-hover:h-full group-hover:translate-y-0">
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="relative col-span-1 h-[600px] overflow-hidden rounded-xl">
-              <Image
-                src="https://images.unsplash.com/photo-1729386910612-c58172d922c3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                width={320}
-                height={450}
-                className="h-full w-full object-cover"
-                alt="Aerial view of a lush green area"
-              />
-              <div className="group absolute bottom-2 w-full overflow-hidden px-2 backdrop-blur-2xl">
-                <div className="flex h-0 min-h-10 flex-col justify-between rounded-xl bg-primary-300 px-6 py-2 duration-300 group-hover:h-[240px]">
-                  <div className="flex items-center justify-between">
-                    <Heading
-                      as="h4"
-                      className="text-label font-semibold leading-none"
-                    >
-                      Tom Smith
-                    </Heading>
-                    <span className="">CTO</span>
-                    <Link href="#">
-                      <LinkedIn2 />
-                    </Link>
-                  </div>
-                  <ul className="duration300 my-4 h-0 translate-y-3 group-hover:h-full group-hover:translate-y-0">
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="relative col-span-1 h-[600px] overflow-hidden rounded-xl">
-              <Image
-                src="https://images.unsplash.com/photo-1729386910612-c58172d922c3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                width={320}
-                height={450}
-                className="h-full w-full object-cover"
-                alt="Aerial view of a lush green area"
-              />
-              <div className="group absolute bottom-2 w-full overflow-hidden px-2 backdrop-blur-2xl">
-                <div className="flex h-0 min-h-10 flex-col justify-between rounded-xl bg-primary-300 px-6 py-2 duration-300 group-hover:h-[240px]">
-                  <div className="flex items-center justify-between">
-                    <Heading
-                      as="h4"
-                      className="text-label font-semibold leading-none"
-                    >
-                      Tom Smith
-                    </Heading>
-                    <span className="">CTO</span>
-                    <Link href="#">
-                      <LinkedIn2 />
-                    </Link>
-                  </div>
-                  <ul className="duration300 my-4 h-0 translate-y-3 group-hover:h-full group-hover:translate-y-0">
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="relative col-span-1 h-[600px] overflow-hidden rounded-xl">
-              <Image
-                src="https://images.unsplash.com/photo-1729386910612-c58172d922c3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                width={320}
-                height={450}
-                className="h-full w-full object-cover"
-                alt="Aerial view of a lush green area"
-              />
-              <div className="group absolute bottom-2 w-full overflow-hidden px-2 backdrop-blur-2xl">
-                <div className="flex h-0 min-h-10 flex-col justify-between rounded-xl bg-primary-300 px-6 py-2 duration-300 group-hover:h-[240px]">
-                  <div className="flex items-center justify-between">
-                    <Heading
-                      as="h4"
-                      className="text-label font-semibold leading-none"
-                    >
-                      Tom Smith
-                    </Heading>
-                    <span className="">CTO</span>
-                    <Link href="#">
-                      <LinkedIn2 />
-                    </Link>
-                  </div>
-                  <ul className="duration300 my-4 h-0 translate-y-3 group-hover:h-full group-hover:translate-y-0">
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="relative col-span-1 h-[600px] overflow-hidden rounded-xl">
-              <Image
-                src="https://images.unsplash.com/photo-1729386910612-c58172d922c3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                width={320}
-                height={450}
-                className="h-full w-full object-cover"
-                alt="Aerial view of a lush green area"
-              />
-              <div className="group absolute bottom-2 w-full overflow-hidden px-2 backdrop-blur-2xl">
-                <div className="flex h-0 min-h-10 flex-col justify-between rounded-xl bg-primary-300 px-6 py-2 duration-300 group-hover:h-[240px]">
-                  <div className="flex items-center justify-between">
-                    <Heading
-                      as="h4"
-                      className="text-label font-semibold leading-none"
-                    >
-                      Tom Smith
-                    </Heading>
-                    <span className="">CTO</span>
-                    <Link href="#">
-                      <LinkedIn2 />
-                    </Link>
-                  </div>
-                  <ul className="duration300 my-4 h-0 translate-y-3 group-hover:h-full group-hover:translate-y-0">
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                    <li className="text-sub-title">4 years experience</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+              ),
+            )}
           </div>
         </Container>
       </SectionBlock>

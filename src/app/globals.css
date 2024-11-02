@@ -44,3 +44,14 @@ body {
 /* .slider-testimonials .carousel .slider-wrapper.axis-horizontal .slider .slide {
   margin: 0 10px;
 } */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+}
+
+.parallax-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

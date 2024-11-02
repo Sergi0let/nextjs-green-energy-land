@@ -41,7 +41,7 @@ const Hero = async () => {
                     alt="Carusel image"
                     width={450}
                     height={250}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-fill"
                   />
                 </figure>
               ),
