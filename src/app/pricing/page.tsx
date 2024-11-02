@@ -9,7 +9,6 @@ import Link from "next/link";
 export default async function PricingPage() {
   const data = await getPricePage();
   const { consultation, pricing, hero } = data;
-  console.log("🚀 ~ PricingPage ~ pricing:", pricing);
 
   return (
     <SectionBlock className="bg-white">
