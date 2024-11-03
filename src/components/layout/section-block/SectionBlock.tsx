@@ -6,7 +6,7 @@ type SectionBlockProps = {
 };
 function SectionBlock({ children, className }: SectionBlockProps) {
   return (
-    <div className={cx("overflow-hidden py-24 sm:py-48", className)}>
+    <div className={cx("overflow-hidden py-28 sm:py-48", className)}>
       {children}
     </div>
   );

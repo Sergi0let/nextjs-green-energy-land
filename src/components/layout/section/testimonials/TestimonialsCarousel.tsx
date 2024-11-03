@@ -27,7 +27,7 @@ export const TestimonialsCarousel = ({
       }
       infiniteLoop
       useKeyboardArrows
-      className="cursor-disable w-screen max-w-7xl overflow-hidden duration-300"
+      className="cursor-disabled relative max-w-7xl overflow-hidden duration-300"
     >
       {items.map(({ tagline, experts, image, heading }, index: number) => (
         <div

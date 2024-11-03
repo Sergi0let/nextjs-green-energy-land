@@ -9,7 +9,7 @@ import {
 
 const ShareSocialList = ({ url }: { url: string }) => {
   return (
-    <div className="flex gap-3">
+    <div className="flex flex-col gap-3">
       <FacebookShareButton
         url={url}
         quote={"next-share is a social share buttons for your next React apps"}

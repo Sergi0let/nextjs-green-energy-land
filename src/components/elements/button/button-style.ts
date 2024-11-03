@@ -11,7 +11,7 @@ export const buttonStyle = cva("whitespace-nowrap", {
       tetriary:
         "rounded-full bg-secondary-950 px-6 py-3 text-white duration-300 hover:bg-secondary-800",
       "tetriary-reversed":
-        "border py-3 px-5 rounded-full text-white hover:bg-primary-300 hover:text-black",
+        "border py-3 px-5 rounded-full text-white hover:bg-primary-300 duration-300 hover:text-black",
     },
     size: {
       sm: "",

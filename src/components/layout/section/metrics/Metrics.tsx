@@ -1,13 +1,18 @@
 import { Container, Heading, SectionBlock, SubTitle } from "@/components";
 import DynamicIcon from "@/components/elements/icons/DynamicIcon";
-import { getHomePageData } from "@/sanity/queries/page";
 import { MetricType } from "@/types/types";
 import { capitalize } from "@/utils/utils";
 
-async function Metrics() {
-  const data = await getHomePageData();
-  const { heading, tagline, Metrics: metrics } = data?.metrics;
+export type MetricsProps = {
+  metrics: {
+    heading: string;
+    tagline: string;
+    Metrics: MetricType[];
+  };
+};
 
+function Metrics({ metrics }: MetricsProps) {
+  const { heading, tagline, Metrics } = metrics;
   return (
     <SectionBlock className="rounded-3xl bg-beigie-primary">
       <Container>
@@ -16,15 +21,15 @@ async function Metrics() {
           <div className="mb-12 sm:mb-24">
             <Heading
               as="h2"
+              animate
               className="mb-8 w-full text-pretty text-section leading-none lg:w-1/2"
             >
               {heading}
             </Heading>
           </div>
           <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {metrics
-              .filter((elem: MetricType) => elem.experts)
-              .map((metric: MetricType, index: number) => (
+            {Metrics.filter((elem: MetricType) => elem.experts).map(
+              (metric: MetricType, index: number) => (
                 <li
                   key={index}
                   className="flex flex-col items-start gap-6 rounded-3xl bg-primary-300 p-10"
@@ -40,12 +45,12 @@ async function Metrics() {
                     <p className="to-neutral-900 text-base">{metric.experts}</p>
                   </div>
                 </li>
-              ))}
+              ),
+            )}
             <li>
               <ul className="flex h-full flex-col justify-between gap-8">
-                {metrics
-                  .filter((elem: MetricType) => !elem.experts)
-                  .map((metric: MetricType, index: number) => (
+                {Metrics.filter((elem: MetricType) => !elem.experts).map(
+                  (metric: MetricType, index: number) => (
                     <li
                       key={index}
                       className="flex h-full gap-6 rounded-3xl bg-primary-300 p-8"
@@ -60,7 +65,8 @@ async function Metrics() {
                         </h4>
                       </div>
                     </li>
-                  ))}
+                  ),
+                )}
               </ul>
             </li>
           </ul>

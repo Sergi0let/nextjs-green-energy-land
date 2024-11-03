@@ -5,12 +5,19 @@ import {
   SectionBlock,
   SubTitle,
 } from "@/components";
-import { getHomePageData } from "@/sanity/queries/page";
 import { AboutUsCarousel } from "./AboutUsCarousel";
 
-const AboutUs = async () => {
-  const data = await getHomePageData();
-  const { heading, tagline, excerpt, solutions, slider } = data?.about;
+export type AboutProps = {
+  about: {
+    heading: string;
+    excerpt?: string;
+    tagline: string;
+    solutions: [{ heading: string; _key: string }];
+    slider: [{ url: string }];
+  };
+};
+const AboutUs = ({ about }: AboutProps) => {
+  const { heading, tagline, excerpt, solutions, slider } = about;
 
   return (
     <SectionBlock className="bg-secondary-950 py-48">
@@ -18,7 +25,11 @@ const AboutUs = async () => {
         <SubTitle subTitle={tagline} />
         <div className="grid gap-12 md:gap-36 lg:grid-cols-2">
           <div className="flex flex-col justify-center gap-6">
-            <Heading as="h2" className="text-section leading-none text-white">
+            <Heading
+              as="h2"
+              animate
+              className="text-wrap text-section leading-none text-white"
+            >
               {heading}
             </Heading>
             <p className="text-base text-white/80">{excerpt}</p>

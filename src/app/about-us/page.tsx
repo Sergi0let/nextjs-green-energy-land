@@ -2,13 +2,12 @@ import {
   Container,
   Heading,
   ImageFull,
-  LinkedIn2,
   NewLetter,
   SectionBlock,
 } from "@/components";
+import { ChampionCard } from "@/components/layout/cards/ChampionCard";
 import { getAboutPage } from "@/sanity/queries/page";
 import { ItemType } from "@/types/types";
-import Image from "next/image";
 import Link from "next/link";
 
 export default async function AboutUsPage() {
@@ -20,7 +19,7 @@ export default async function AboutUsPage() {
       <SectionBlock className="bg-white">
         <Container className="py-0">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-            <Heading className="text-hero" as="h1">
+            <Heading animate className="text-hero" as="h1">
               {hero?.heading}
             </Heading>
             <div>
@@ -149,6 +148,7 @@ export default async function AboutUsPage() {
         <Container>
           <Heading
             as="h2"
+            animate
             className="mb-24 text-section capitalize leading-none"
           >
             {ourPhilosophy?.heading}
@@ -180,49 +180,15 @@ export default async function AboutUsPage() {
         <Container>
           <Heading
             as="h2"
+            animate
             className="mb-24 text-section capitalize leading-none"
           >
             {ourExpert?.heading}
           </Heading>
           <div className="grid gap-4 md:grid-cols-3">
-            {ourExpert?.ourExperts.map(
-              (
-                { image, heading, tagline, experts, link }: ItemType,
-                index: number,
-              ) => (
-                <div
-                  key={index}
-                  className="relative col-span-1 h-[600px] overflow-hidden rounded-xl"
-                >
-                  <Image
-                    src={image ?? ""}
-                    width={320}
-                    height={450}
-                    className="h-full w-full object-cover"
-                    alt="Aerial view of a lush green area"
-                  />
-                  <div className="group absolute bottom-2 w-full overflow-hidden px-2 backdrop-blur-2xl">
-                    <div className="flex h-0 min-h-10 flex-col justify-between rounded-xl bg-primary-300 px-6 py-2 duration-300 group-hover:h-[240px]">
-                      <div className="flex items-center justify-between">
-                        <Heading
-                          as="h4"
-                          className="text-label font-semibold leading-none"
-                        >
-                          {heading}
-                        </Heading>
-                        <span className="">{tagline}</span>
-                        <Link href={link ?? ""} target="_blank">
-                          <LinkedIn2 />
-                        </Link>
-                      </div>
-                      <div className="duration300 my-4 h-0 translate-y-3 group-hover:h-full group-hover:translate-y-0">
-                        {experts}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ),
-            )}
+            {ourExpert?.ourExperts.map((expert: ItemType, index: number) => (
+              <ChampionCard key={index} {...expert} />
+            ))}
           </div>
         </Container>
       </SectionBlock>
