@@ -1,11 +1,11 @@
-import { Button, Heading, SectionBlock } from "@/components";
+import { Button, Heading } from "@/components";
 
 function NewLetter() {
   return (
-    <SectionBlock className="rounded-3xl bg-primary-300 py-16 sm:px-24">
+    <div className="rounded-3xl bg-primary-300 py-12 sm:px-8">
       <div className="container">
-        <div className="grid gap-3 sm:grid-cols-2">
-          <Heading as="h2" className="text-title leading-none">
+        <div className="grid gap-6 sm:grid-cols-2">
+          <Heading as="h2" animate className="text-title leading-none">
             Your Source for Green Energy Updates
           </Heading>
           <div className="mt-4 flex flex-col justify-center sm:mt-0 sm:flex-row sm:items-center sm:gap-3">
@@ -18,7 +18,7 @@ function NewLetter() {
           </div>
         </div>
       </div>
-    </SectionBlock>
+    </div>
   );
 }
 export { NewLetter };

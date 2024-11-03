@@ -26,12 +26,13 @@ function Testimonials({ data }: TestimonialsProps) {
 
         <Heading
           as="h2"
+          animate
           className="w-full text-center text-section leading-none text-white"
         >
           {heading}
         </Heading>
 
-        <div className="mt-24">
+        <div className="mt-24 overflow-hidden">
           <TestimonialsCarouselDynamic items={solutions} />
         </div>
       </Container>

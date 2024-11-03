@@ -23,7 +23,10 @@ const Header = () => {
     if (size.width > 768) {
       setShowMenu(false);
     }
-  }, [size.width]);
+    if (pathname) {
+      setShowMenu(false);
+    }
+  }, [size.width, pathname]);
 
   return (
     <header

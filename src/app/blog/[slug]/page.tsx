@@ -1,4 +1,10 @@
-import { Container, Heading, SectionBlock, SubTitle } from "@/components";
+import {
+  BlogItem,
+  Container,
+  Heading,
+  SectionBlock,
+  SubTitle,
+} from "@/components";
 import ShareSocialList from "@/components/elements/share/ShareSocial";
 import { client } from "@/sanity/lib/client";
 import { getBlogPage, getBlogPost } from "@/sanity/queries/page";
@@ -151,49 +157,7 @@ export default async function SingleBlogPage({
             {relatedPosts
               ?.filter((elem: { slug: string }) => elem.slug !== slug)
               ?.map((post: BlogPostType, index: number) => (
-                <Link
-                  href={`/blog/${post?.slug}`}
-                  key={index}
-                  className="group flex cursor-pointer flex-col gap-8"
-                >
-                  <div className="aspect-video h-[360px] overflow-hidden rounded-3xl">
-                    <Image
-                      src={post?.mainImage ?? ""}
-                      height={360}
-                      width={360}
-                      alt="Blog 1"
-                      className="h-full w-full object-cover duration-300 ease-in-out group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-between">
-                    <Heading
-                      as="h3"
-                      className="mb-4 text-sub-title leading-none text-white"
-                    >
-                      {post?.title}
-                    </Heading>
-                    <p className="line-clamp-2 text-base text-neutral-400">
-                      Solar energy is revolutionizing the way we power our
-                      world. In this blog post, we&rsquo;ll delve into the
-                      incredible potential of solar technology, its
-                      environmental benefits, and how you can tap into this
-                      sustainable energy source for a brighter future.
-                    </p>
-                  </div>
-                  <div className="mt-6 flex items-center gap-6">
-                    <div className="flex items-center gap-3">
-                      <Image
-                        src={post?.authorImage ?? ""}
-                        height={40}
-                        width={40}
-                        alt="Avatar 1"
-                        className="h-[40px] rounded-full object-cover"
-                      />
-                      <span className="text-white">{post?.name}</span>
-                    </div>
-                    <div className="text-white">{post?.timeRead} min read</div>
-                  </div>
-                </Link>
+                <BlogItem key={index} post={post} />
               ))}
           </div>
         </div>
