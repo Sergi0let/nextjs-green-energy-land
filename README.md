@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌍 My Next.js SEO-Optimized Project
 
-## Getting Started
+Welcome to the **Next.js** SEO-focused website project, featuring **Tailwind CSS** for styling, **GSAP animations**, and a **Sanity.io** backend for content management. This project is designed for seamless scalability, dynamic content management, and a high-performance user experience.
 
-First, run the development server:
+## 🚀 Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **SEO-Optimized**: Built with Next.js for server-side rendering and fast performance.
+- **Dynamic Content**: Sanity.io backend supports editing, adding pages, blogs, authors, and categories.
+- **Responsive Animations**: Smooth, interactive animations with GSAP.
+- **Modern Styling**: Tailwind CSS for a consistent and responsive design.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js 14
+- **Styling**: Tailwind CSS
+- **Animations**: GSAP
+- **Backend**: Sanity.io
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚧 Local Development Setup
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the Repository**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Run the Development Server:**:
+   ```bash
+   npm run dev
+   ```
+4. **Build for Production**:
 
-## Deploy on Vercel
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   Navigate to http://localhost:3000 in your browser.
+   Navigate to ADMIN http://localhost:3000/admin in your browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Start the Production Server:**:
+   ```bash
+   npm start
+   ```
+   📬 Contact
