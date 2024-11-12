@@ -41,9 +41,7 @@ body {
 .carousel {
   height: 100%;
 }
-/* .slider-testimonials .carousel .slider-wrapper.axis-horizontal .slider .slide {
-  margin: 0 10px;
-} */
+
 .parallax-container {
   position: relative;
   overflow: hidden;
@@ -54,4 +52,83 @@ body {
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+.testimonials-carousel .carousel.carousel-slider {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.about-us-carousel .carousel .control-dots .dot,
+.testimonials-carousel .carousel .control-dots {
+  transform: translateY(6px);
+  z-index: 100;
+}
+.about-us-carousel .carousel .control-dots .dot,
+.testimonials-carousel .carousel .control-dots .dot {
+  width: 10px;
+  height: 10px;
+  position: relative;
+  background-color: #bef264;
+}
+.about-us-carousel .carousel .control-dots .dot::after,
+.testimonials-carousel .carousel .control-dots .dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 1s;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #bef264;
+}
+.about-us-carousel .carousel .control-dots .dot.selected::after,
+.testimonials-carousel .carousel .control-dots .dot.selected::after {
+  width: 18px;
+  height: 18px;
+  transition: all 0.3s;
+}
+.testimonials-carousel .carousel .control-arrow.control-next,
+.testimonials-carousel .carousel .control-arrow.control-prev {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 100;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+}
+.testimonials-carousel .carousel .control-arrow.control-prev {
+  left: 20%;
+}
+.testimonials-carousel .carousel .control-arrow.control-next {
+  right: 20%;
+}
+.testimonials-carousel .carousel .control-arrow.control-prev::before,
+.testimonials-carousel .carousel .control-arrow.control-next::before {
+  content: "";
+  border: none;
+  width: 40px;
+  height: 40px;
+  background: url("../../public/arrow-right.png") center no-repeat;
+}
+.testimonials-carousel .carousel .control-arrow.control-prev::before {
+  transform: rotate(180deg);
+}
+.testimonials-carousel .carousel .control-arrow.control-next:hover,
+.testimonials-carousel .carousel .control-arrow.control-prev:hover {
+  background: none;
+}
+@media (max-width: 768px) {
+  .testimonials-carousel .carousel .control-arrow.control-next,
+  .testimonials-carousel .carousel .control-arrow.control-prev {
+    display: none;
+  }
 }

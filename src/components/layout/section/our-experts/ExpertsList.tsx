@@ -1,16 +1,50 @@
+"use client";
+
 import { LinkedIn } from "@/components/elements";
 import { ItemType } from "@/types/types";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
+gsap.registerPlugin(ScrollTrigger);
 
 function ExpertsList({ ourExperts }: { ourExperts: ItemType[] }) {
+  const expertsRef = useRef<HTMLDivElement[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      expertsRef.current.forEach((expert, i) => {
+        gsap.to(expert, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: expertsRef.current[i],
+            markers: false,
+            toggleActions: "restart none complete none",
+          },
+        });
+      });
+    },
+    { scope: containerRef },
+  );
+
   return (
-    <div className="mt-20">
+    <div ref={containerRef} className="mt-20">
       {ourExperts.map(
         ({ link, image, tagline, heading }: ItemType, index: number) => (
           <div
             key={index}
-            className="expert-item flex translate-y-6 items-center gap-12 border-b border-neutral-700 py-8"
+            className="expert-item opacity-1 flex translate-y-24 items-center gap-12 border-b border-neutral-700 py-8 opacity-0"
+            ref={(el) => {
+              if (el) expertsRef.current[index] = el;
+            }}
           >
             <div className="relative size-[90px] flex-shrink-0">
               <Image

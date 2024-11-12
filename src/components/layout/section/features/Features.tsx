@@ -3,10 +3,11 @@
 import { Container, Heading, SectionBlock, SubTitle } from "@/components";
 import DynamicIcon from "@/components/elements/icons/DynamicIcon";
 import { capitalize } from "@/utils/utils";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 type FeaturesProps = {
   solutions: {
@@ -30,26 +31,24 @@ if (typeof window !== "undefined") {
 
 function Features({ solutions }: FeaturesProps) {
   const featureMain = useRef<HTMLDivElement>(null);
+  const featureList = useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
-    const boxes = gsap.utils.toArray<HTMLElement>(".key-item");
-
-    gsap.to(boxes, {
-      y: 0,
-      opacity: 1,
-      ease: "power2.inOut",
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: featureMain.current,
-        start: "top 70%",
-        end: "bottom 10%",
-        scrub: true,
-        // markers: {
-        //   startColor: "red",
-        //   endColor: "skyblue",
-        // },
-      },
-    });
+  useGSAP(() => {
+    if (featureList.current) {
+      const list = gsap.utils.toArray(featureList.current.children);
+      gsap.to(list, {
+        y: 0,
+        opacity: 1,
+        ease: "power2.inOut",
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: featureMain.current,
+          start: "top 80%",
+          end: "top 0%",
+          toggleActions: "restart none complete none",
+        },
+      });
+    }
   }, []);
 
   return (
@@ -66,11 +65,14 @@ function Features({ solutions }: FeaturesProps) {
               {solutions?.heading}
             </Heading>
           </div>
-          <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
+          <ul
+            ref={featureList}
+            className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4"
+          >
             {solutions?.solutions.map((solution) => (
               <li
                 key={solution._key}
-                className="key-item flex h-full translate-y-20 flex-col items-start justify-between opacity-0"
+                className="flex h-full translate-y-20 flex-col items-start justify-between opacity-0"
               >
                 <DynamicIcon name={capitalize(solution?.icon || "")} />
                 <div className="mt-6">

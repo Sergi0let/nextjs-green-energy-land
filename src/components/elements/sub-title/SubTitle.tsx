@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import cx from "clsx";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -20,43 +20,69 @@ function SubTitle({ className, subTitle }: SubTitleProps) {
   const dotRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
 
-  useGSAP(
-    () => {
-      const boxes = gsap.utils.toArray<HTMLSpanElement>(dotRef.current);
-      boxes.forEach((box) => {
-        gsap.to(box, {
-          y: 0,
-          opacity: 1,
-          delay: 1.5,
-          duration: 1,
-          ease: "bounce",
-          scrollTrigger: {
-            trigger: box,
-            start: "bottom 70%",
-            end: "bottom 20%",
-            scrub: true,
-          },
-        });
+  useEffect(() => {
+    if (main.current && dotRef.current && textRef.current) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: main.current,
+          start: "top 70%",
+          end: "top 20%",
+          toggleActions: "restart none complete none",
+          // markers: true,
+        },
       });
+      tl.to(textRef.current, {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "easeOut",
+      });
+      tl.to(dotRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "bounce",
+      });
+    }
+  }, []);
 
-      const text = gsap.utils.toArray<HTMLSpanElement>(textRef.current);
-      text.forEach((t) => {
-        gsap.to(t, {
-          x: 0,
-          opacity: 1,
-          delay: 0.5,
-          duration: 1,
-          ease: "easeOut",
-          scrollTrigger: {
-            trigger: t,
-            start: "top 70%",
-            end: "top 20%",
-          },
-        });
-      });
-    },
-    { scope: main },
-  );
+  // useGSAP(
+  //   () => {
+  //     const boxes = gsap.utils.toArray<HTMLSpanElement>(dotRef.current);
+  //     boxes.forEach((box) => {
+  //       gsap.to(box, {
+  //         y: 0,
+  //         opacity: 1,
+  //         delay: 1.5,
+  //         duration: 1,
+  //         ease: "bounce",
+  //         scrollTrigger: {
+  //           trigger: box,
+  //           start: "bottom 70%",
+  //           end: "bottom 20%",
+  //           scrub: true,
+  //         },
+  //       });
+  //     });
+
+  //     const text = gsap.utils.toArray<HTMLSpanElement>(textRef.current);
+  //     text.forEach((t) => {
+  //       gsap.to(t, {
+  //         x: 0,
+  //         opacity: 1,
+  //         delay: 0.5,
+  //         duration: 1,
+  //         ease: "easeOut",
+  //         scrollTrigger: {
+  //           trigger: t,
+  //           start: "top 70%",
+  //           end: "top 20%",
+  //         },
+  //       });
+  //     });
+  //   },
+  //   { scope: main },
+  // );
 
   return (
     <div

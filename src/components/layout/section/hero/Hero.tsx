@@ -1,6 +1,5 @@
-import { Container, Heading, SectionBlock } from "@/components";
+import { Container, Heading, LinkBtn, SectionBlock } from "@/components";
 import Image from "next/image";
-import Link from "next/link";
 import Marquee from "react-fast-marquee";
 
 export type HeroType = {
@@ -26,7 +25,7 @@ const Hero = ({ data }: HeroType) => {
     <SectionBlock className="flex h-fit flex-col gap-32 bg-secondary-950 py-48">
       <Container className="flex h-1/2 items-center justify-center">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="">
+          <div className="hero-block">
             <Heading
               as="h1"
               animate
@@ -35,13 +34,15 @@ const Hero = ({ data }: HeroType) => {
               {hero?.heading}
             </Heading>
           </div>
-          <div className="mt-6 flex grid-cols-2 flex-col justify-between gap-6 sm:mt-0 sm:gap-0 md:justify-around">
+          <div className="mt-6 flex grid-cols-2 flex-col justify-between gap-6 sm:mt-0 sm:gap-0 md:ml-52 md:justify-around">
             <p className="text-base text-white">{hero?.tagline}</p>
-            <Link className="mt-4" href={promotion?.link || "/"}>
-              <span className="rounded-full bg-primary-300 px-5 py-4 font-semibold duration-300 hover:bg-primary-400">
-                {promotion?.title}
-              </span>
-            </Link>
+            <LinkBtn
+              className={"mt-10"}
+              href={promotion?.link || "/"}
+              title={promotion?.title}
+              animDelay={2}
+              animText={promotion?.title.replace(/^\w+/, "Learn")}
+            />
           </div>
         </div>
       </Container>
